@@ -1,2 +1,4 @@
 creds.cfg
 myenv
+*/__pycache__
+*/*/__pycache__
