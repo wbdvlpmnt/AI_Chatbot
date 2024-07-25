@@ -2,7 +2,7 @@ from typing import Union
 from fastapi import FastAPI, Response, status
 
 from controller import invoke_chatbot
-from model import UserPrompt
+from model import Message
 
 app = FastAPI()
 
@@ -11,9 +11,9 @@ def read_root():
     return {"hello": "world"}
 
 @app.post("/chatbot")
-def chatbot(user_prompt: UserPrompt):
+def chatbot(message: Message)->Message:
     try:
-        chatbot_response = invoke_chatbot(user_prompt.prompt)
+        chatbot_response = invoke_chatbot(message.messageContent)
         return chatbot_response
     except Exception as e:
         print(e)
